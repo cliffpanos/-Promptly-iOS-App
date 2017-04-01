@@ -15,6 +15,7 @@ class PresentationViewController: UIViewController {
     @IBOutlet weak var subTitle: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var presentButton: UIStackView!
+    @IBOutlet weak var presentStackView: UIStackView!
     
     var presentation: Presentation!
     
@@ -24,16 +25,12 @@ class PresentationViewController: UIViewController {
         presTitle.text = presentation.title?.uppercased()
         subTitle.text = presentation.details
         timeLabel.text = "\(presentation.durationMinutes):\(presentation.durationSeconds)"
-        
-        presentButton.layer.cornerRadius = 4
-        
+                
         self.navigationItem.setRightBarButton(UIBarButtonItem(title: "Edit", style: .plain, target: #selector(editPressed), action: #selector(editPressed)), animated: true)
+        
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        presentButton.layer.cornerRadius = 4
-    }
     
     func editPressed() {
         print("edit pressed!")
