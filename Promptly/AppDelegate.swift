@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
     static var session: WCSession?
     var launchedShortcutItem: UIApplicationShortcutItem?
         //Optional used for the 3D-Touch Quick Actions
+    static var firstLaunch = true
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -147,21 +148,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WCSessionDelegate {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
 
-        if let tvc = AppDelegate.already3DTouchedVC {
-            if shortcutType == "NewPresentation" && tvc is NewPresViewController {
+        if let vc = AppDelegate.already3DTouchedVC, AppDelegate.firstLaunch {
+            if shortcutType == "NewPresentation" && vc is NewPresViewController {
                 return false
             }
-            if shortcutType == "Settings" && tvc is SettingsViewController {
+            if shortcutType == "Settings" && vc is SettingsViewController {
                 return false
             }
+            AppDelegate.firstLaunch = false
         }
         
         if let touchedVC = AppDelegate.already3DTouchedVC {
             print("dismissing")
             if touchedVC is PresentationViewController {
                 touchedVC.navigationController?.popViewController(animated: true)
+            } else {
+                touchedVC.dismiss(animated: false, completion: nil)
             }
-            touchedVC.dismiss(animated: false, completion: nil)
         }
 
         switch(shortcutType) {

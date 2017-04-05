@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9106AB621E951BC800CEBD7A /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9106AB611E951BC800CEBD7A /* BorderedButton.swift */; };
 		9130321A1E8B07A700A75842 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913032191E8B07A700A75842 /* TimePicker.swift */; };
 		914ECC131E5FFA9A00E52676 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914ECC121E5FFA9A00E52676 /* CloudKit.framework */; };
 		91922AB71E7DD3630003F179 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91922AB61E7DD3630003F179 /* SettingsViewController.swift */; };
@@ -73,6 +74,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9106AB611E951BC800CEBD7A /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
 		913032191E8B07A700A75842 /* TimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		914ECC101E5FFA8F00E52676 /* Promptly Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Promptly Watch Extension.entitlements"; sourceTree = "<group>"; };
 		914ECC121E5FFA9A00E52676 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -161,6 +163,7 @@
 				91922AB61E7DD3630003F179 /* SettingsViewController.swift */,
 				91A6232C1E6A4479008AEB48 /* C.swift */,
 				91EB0D8E1E594CAD00711B2A /* Main.storyboard */,
+				9106AB611E951BC800CEBD7A /* BorderedButton.swift */,
 				913032191E8B07A700A75842 /* TimePicker.swift */,
 				91EB0D941E594CAD00711B2A /* Assets.xcassets */,
 				91EB0D961E594CAD00711B2A /* LaunchScreen.storyboard */,
@@ -357,6 +360,7 @@
 			files = (
 				9130321A1E8B07A700A75842 /* TimePicker.swift in Sources */,
 				91A623441E6CAC0B008AEB48 /* NewPresViewController.swift in Sources */,
+				9106AB621E951BC800CEBD7A /* BorderedButton.swift in Sources */,
 				91EB0D931E594CAD00711B2A /* Promptly.xcdatamodeld in Sources */,
 				91EB0D8D1E594CAD00711B2A /* HomeViewController.swift in Sources */,
 				91A6232D1E6A4479008AEB48 /* C.swift in Sources */,

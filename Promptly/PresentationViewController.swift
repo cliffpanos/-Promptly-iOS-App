@@ -14,8 +14,10 @@ class PresentationViewController: UIViewController {
     @IBOutlet weak var presTitle: UILabel!
     @IBOutlet weak var subTitle: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    @IBOutlet weak var presentButton: UIStackView!
+
+    @IBOutlet weak var upperStackView: UIStackView!
     @IBOutlet weak var presentStackView: UIStackView!
+    @IBOutlet weak var presentButton: UIButton!
     
     var presentation: Presentation!
     
@@ -28,10 +30,16 @@ class PresentationViewController: UIViewController {
                 
         self.navigationItem.setRightBarButton(UIBarButtonItem(title: "Edit", style: .plain, target: #selector(editPressed), action: #selector(editPressed)), animated: true)
         
-
+        let line = UIView(frame: CGRect(x: upperStackView.frame.minX, y: upperStackView.frame.minY, width: 2, height: upperStackView.frame.height))
+        line.backgroundColor = UIColor.blue
+        upperStackView.addArrangedSubview(line)
+        
     }
     
     
+    @IBAction func presentPressed(_ sender: Any) {
+        editPressed()
+    }
     func editPressed() {
         print("edit pressed!")
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

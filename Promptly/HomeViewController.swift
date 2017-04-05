@@ -182,7 +182,7 @@ extension HomeViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
         print("FILTERING!!")
         tableView.reloadData()
     }
-
+    
     
 }
 
