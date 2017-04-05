@@ -214,32 +214,13 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="oCC-dB-p5n">
-                                <rect key="frame" x="142.5" y="267.5" width="90" height="90"/>
+                                <rect key="frame" x="31" y="267.5" width="313" height="90"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="promptly" highlightedImage="SettingsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="KbB-tE-KHZ">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                     </imageView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="by5-dp-UqF" customClass="BorderedButton" customModule="Promptly" customModuleProvider="target">
-                                <rect key="frame" x="30.5" y="535" width="314" height="42"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="42" id="KRW-8Y-hct"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" title="  Present on iPhone + Watch  ">
-                                    <color key="titleColor" red="0.99457603049999999" green="1" blue="0.96735031660000004" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="presentPressed:" destination="I8M-Vb-rzl" eventType="touchUpInside" id="Phu-DC-e5v"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PcL-VT-Ha9" customClass="BorderedButton" customModule="Promptly" customModuleProvider="target">
                                 <rect key="frame" x="31" y="595" width="313" height="42"/>
                                 <constraints>
@@ -261,20 +242,41 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="by5-dp-UqF" customClass="BorderedButton" customModule="Promptly" customModuleProvider="target">
+                                <rect key="frame" x="31" y="545" width="314" height="42"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="KRW-8Y-hct"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="  Present on iPhone + Watch  ">
+                                    <color key="titleColor" red="0.99457603049999999" green="1" blue="0.96735031660000004" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="presentPressed:" destination="I8M-Vb-rzl" eventType="touchUpInside" id="Phu-DC-e5v"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PcL-VT-Ha9" firstAttribute="top" secondItem="by5-dp-UqF" secondAttribute="bottom" constant="18" id="17O-44-pvn"/>
+                            <constraint firstItem="PcL-VT-Ha9" firstAttribute="top" secondItem="by5-dp-UqF" secondAttribute="bottom" constant="8" id="17O-44-pvn"/>
                             <constraint firstItem="wo7-Bn-2ry" firstAttribute="leading" secondItem="wdN-J5-Mcn" secondAttribute="leadingMargin" constant="16" id="5nS-po-ezT"/>
                             <constraint firstItem="oCC-dB-p5n" firstAttribute="centerX" secondItem="wdN-J5-Mcn" secondAttribute="centerX" id="9mk-yt-QjG"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="by5-dp-UqF" secondAttribute="trailing" constant="15" id="9pW-r6-YGs"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="by5-dp-UqF" secondAttribute="trailing" constant="14" id="9pW-r6-YGs"/>
                             <constraint firstItem="PcL-VT-Ha9" firstAttribute="leading" secondItem="wdN-J5-Mcn" secondAttribute="leadingMargin" constant="15" id="Gik-RF-Bs3"/>
                             <constraint firstAttribute="trailingMargin" secondItem="wo7-Bn-2ry" secondAttribute="trailing" constant="16" id="Iva-lt-yuh"/>
                             <constraint firstItem="PcL-VT-Ha9" firstAttribute="centerX" secondItem="wdN-J5-Mcn" secondAttribute="centerX" id="Lkr-WN-nWV"/>
                             <constraint firstItem="by5-dp-UqF" firstAttribute="centerX" secondItem="wdN-J5-Mcn" secondAttribute="centerX" id="bRI-r9-J20"/>
+                            <constraint firstItem="oCC-dB-p5n" firstAttribute="leading" secondItem="wdN-J5-Mcn" secondAttribute="leadingMargin" constant="15" id="cqw-Ue-kED"/>
                             <constraint firstItem="eIo-xy-ACv" firstAttribute="top" secondItem="PcL-VT-Ha9" secondAttribute="bottom" constant="30" id="gb4-gz-ddp"/>
                             <constraint firstItem="by5-dp-UqF" firstAttribute="leading" secondItem="wdN-J5-Mcn" secondAttribute="leadingMargin" constant="15" id="h3o-L7-rAb"/>
                             <constraint firstItem="oCC-dB-p5n" firstAttribute="top" secondItem="wBb-XT-p8P" secondAttribute="bottom" constant="35" id="hGd-1a-kZX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oCC-dB-p5n" secondAttribute="trailing" constant="15" id="kSY-eB-PtC"/>
                             <constraint firstItem="wo7-Bn-2ry" firstAttribute="top" secondItem="hSX-Pz-VXy" secondAttribute="bottom" constant="26" id="m8f-Cf-zFJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PcL-VT-Ha9" secondAttribute="trailing" constant="15" id="oaN-c9-a4W"/>
                         </constraints>

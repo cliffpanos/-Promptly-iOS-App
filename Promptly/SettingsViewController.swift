@@ -25,11 +25,6 @@ class SettingsViewController: UIViewController {
         C.SettingsVC = self
         print("initializing SettingsViewController")
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        AppDelegate.already3DTouchedVC = self
-    }
     
     @IBAction func onVibrateButtonPressed(_ sender: Any) {
         print("Vibrating iPhone")

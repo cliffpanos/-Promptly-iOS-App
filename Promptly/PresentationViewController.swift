@@ -23,7 +23,7 @@ class PresentationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        AppDelegate.already3DTouchedVC = self
+
         presTitle.text = presentation.title?.uppercased()
         subTitle.text = presentation.details
         timeLabel.text = "\(presentation.durationMinutes):\(presentation.durationSeconds)"
