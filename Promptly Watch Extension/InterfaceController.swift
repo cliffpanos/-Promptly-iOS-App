@@ -14,27 +14,38 @@ class InterfaceController: WKInterfaceController {
 
     @IBOutlet var vibrateButton: WKInterfaceButton!
     @IBOutlet var label: WKInterfaceLabel!
+    @IBOutlet var table: WKInterfaceTable!
     
     var session: WCSession?
 
-    static var instance: InterfaceController!
-    	
-    /*override init() {
-        super.init()
-        InterfaceController.instance = self
-    }*/
     
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         ExtensionDelegate.firstScreen = self
-        session = ExtensionDelegate.instance.session
+        session = ExtensionDelegate.session
 
     }
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        table.setNumberOfRows(4, withRowType: "presentation")
+        //table.insertRows(at: IndexSet(), withRowType: "presentation")
+        
     }
+
+    
+    override func didAppear() {
+        super.didAppear()
+        //Code here
+    }
+    
+    override func willDisappear() {
+        super.willDisappear()
+        //Code heres
+    }
+
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible

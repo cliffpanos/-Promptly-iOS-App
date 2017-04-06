@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
     <device id="watch38" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11508"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="12029"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -14,22 +14,96 @@
             <objects>
                 <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Promptly_Watch" customModuleProvider="target">
                     <items>
-                        <label alignment="left" text="Promptly Presentations" minimumScaleFactor="0.69999999999999996" id="X7S-iK-SuE"/>
-                        <switch width="1" alignment="left" value="YES" title="Switch" id="alz-rf-NBB"/>
-                        <button width="1" alignment="left" title="Press" id="J4I-9A-gRi">
+                        <label alignment="left" text="Promptly Presentations" minimumScaleFactor="0.69999999999999996" id="X7S-iK-SuE">
+                            <fontDescription key="font" style="UICTFontTextStyleHeadline"/>
+                        </label>
+                        <label width="134" alignment="center" text="Status: Off" textAlignment="center" id="BRj-mx-8gn">
+                            <fontDescription key="font" type="system" weight="light" pointSize="16"/>
+                        </label>
+                        <button width="1" alignment="left" title="Connect iPhone" id="J4I-9A-gRi">
                             <connections>
                                 <action selector="onVibrateButtonPressed" destination="AgC-eL-Hgc" id="kvs-DF-WTd"/>
                             </connections>
                         </button>
-                        <label width="134" alignment="center" text="Off" textAlignment="center" id="BRj-mx-8gn"/>
+                        <table alignment="left" id="gWF-jH-UBp">
+                            <items>
+                                <tableRow identifier="presentation" id="NbS-gR-hH9">
+                                    <group key="rootItem" width="1" height="50" alignment="left" layout="vertical" spacing="0.0" id="xSi-Pt-MWg">
+                                        <items>
+                                            <timer width="1" height="0.45000000000000001" alignment="left" textAlignment="center" previewedSeconds="1200" id="0QN-iK-OGY">
+                                                <color key="textColor" red="0.97032368179999995" green="0.31497259649999998" blue="0.35228304030000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <calendarUnit key="units" minute="YES" second="YES"/>
+                                            </timer>
+                                            <label width="1" height="0.5" alignment="left" text="PRES TITLE" textAlignment="center" id="VwU-fv-2pS"/>
+                                        </items>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="gsu-gT-qJs" kind="push" id="TeH-7R-zr0"/>
+                                        </connections>
+                                    </group>
+                                </tableRow>
+                            </items>
+                        </table>
                     </items>
                     <connections>
                         <outlet property="label" destination="BRj-mx-8gn" id="nmQ-mo-gaV"/>
+                        <outlet property="table" destination="gWF-jH-UBp" id="fbt-4M-Gip"/>
                         <outlet property="vibrateButton" destination="J4I-9A-gRi" id="yes-YK-X3n"/>
                     </connections>
                 </controller>
             </objects>
             <point key="canvasLocation" x="45" y="36"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="67s-8f-hFj">
+            <objects>
+                <controller id="gsu-gT-qJs">
+                    <items>
+                        <group width="1" alignment="left" animationDuration="1" layout="vertical" id="1iW-kk-ILB">
+                            <items>
+                                <timer alignment="left" id="ydm-D2-qxg">
+                                    <color key="textColor" red="0.97032368179999995" green="0.31497259649999998" blue="0.35228304030000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <fontDescription key="font" type="italicSystem" pointSize="18"/>
+                                    <calendarUnit key="units" minute="YES" second="YES"/>
+                                </timer>
+                                <label alignment="left" text="PRES TITLE" numberOfLines="2" id="iyy-tY-w0p">
+                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="font" type="system" pointSize="17"/>
+                                </label>
+                                <label width="1" alignment="left" text="Presentation Details" numberOfLines="3" id="1Uj-TE-R0z">
+                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                </label>
+                                <imageView alignment="left" verticalAlignment="center" image="promptly" contentMode="center" id="C6P-YO-Mje"/>
+                            </items>
+                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="306" y="36"/>
+        </scene>
+        <!--Interface Controller-->
+        <scene sceneID="x4h-kq-vTn">
+            <objects>
+                <controller id="bAS-AQ-6h4">
+                    <items>
+                        <group width="1" height="1" alignment="center" verticalAlignment="center" layout="vertical" id="6Rq-gh-49h">
+                            <items>
+                                <label width="1" alignment="left" text="PRES TITLE" textAlignment="center" numberOfLines="2" id="RZh-Uo-sz0">
+                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                                <timer width="1" alignment="left" textAlignment="center" format="abbreviated" previewedSeconds="750" id="A6n-z1-T1u">
+                                    <color key="textColor" red="0.97032368179999995" green="0.31497259649999998" blue="0.35228304030000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <fontDescription key="font" type="system" pointSize="36"/>
+                                    <calendarUnit key="units" minute="YES" second="YES"/>
+                                </timer>
+                                <label width="1" alignment="left" text="Upcoming Alert" textAlignment="center" id="17k-UK-vNt"/>
+                            </items>
+                        </group>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="176" y="344"/>
         </scene>
         <!--Static Notification Interface Controller-->
         <scene sceneID="AEw-b0-oYE">

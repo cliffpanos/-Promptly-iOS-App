@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9106AB621E951BC800CEBD7A /* BorderedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9106AB611E951BC800CEBD7A /* BorderedButton.swift */; };
+		9111715B1E9691490029CCF6 /* WC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9111715A1E9691490029CCF6 /* WC.swift */; };
 		9130321A1E8B07A700A75842 /* TimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 913032191E8B07A700A75842 /* TimePicker.swift */; };
 		914ECC131E5FFA9A00E52676 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 914ECC121E5FFA9A00E52676 /* CloudKit.framework */; };
 		91922AB71E7DD3630003F179 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91922AB61E7DD3630003F179 /* SettingsViewController.swift */; };
@@ -75,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		9106AB611E951BC800CEBD7A /* BorderedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BorderedButton.swift; sourceTree = "<group>"; };
+		9111715A1E9691490029CCF6 /* WC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WC.swift; sourceTree = "<group>"; };
 		913032191E8B07A700A75842 /* TimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		914ECC101E5FFA8F00E52676 /* Promptly Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Promptly Watch Extension.entitlements"; sourceTree = "<group>"; };
 		914ECC121E5FFA9A00E52676 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS3.1.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -190,6 +192,7 @@
 				914ECC101E5FFA8F00E52676 /* Promptly Watch Extension.entitlements */,
 				91EB0DB41E594DD400711B2A /* InterfaceController.swift */,
 				91EB0DB61E594DD400711B2A /* ExtensionDelegate.swift */,
+				9111715A1E9691490029CCF6 /* WC.swift */,
 				91EB0DB81E594DD400711B2A /* NotificationController.swift */,
 				91EB0DBA1E594DD400711B2A /* ComplicationController.swift */,
 				91EB0DBC1E594DD400711B2A /* Assets.xcassets */,
@@ -377,6 +380,7 @@
 				91EB0DB91E594DD400711B2A /* NotificationController.swift in Sources */,
 				91EB0DBB1E594DD400711B2A /* ComplicationController.swift in Sources */,
 				91EB0DB71E594DD400711B2A /* ExtensionDelegate.swift in Sources */,
+				9111715B1E9691490029CCF6 /* WC.swift in Sources */,
 				91EB0DB51E594DD400711B2A /* InterfaceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

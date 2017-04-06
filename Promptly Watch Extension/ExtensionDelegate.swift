@@ -11,34 +11,33 @@ import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
     
-    var session: WCSession?
+    static var session: WCSession?
     static var firstScreen: InterfaceController?
-    static var instance: ExtensionDelegate!
     
     func setSession() {
         if WCSession.isSupported() {
-            session = WCSession.default()
-            session?.delegate = self
-            session?.activate()
-            print("session \(String(describing: session)) activated on Watch")
+            ExtensionDelegate.session = WCSession.default()
+            ExtensionDelegate.session?.delegate = self
+            ExtensionDelegate.session?.activate()
+            print("session \(String(describing: ExtensionDelegate.session)) activated on Watch")
         }
-        print("Nil session?: \(session == nil)")
-        print("WATCH Session is reachable: \(String(describing: session?.isReachable))")
-        session?.sendMessage(["Activity" : "Session Activated"], replyHandler: nil, errorHandler: nil)
+        print("Nil session?: \(ExtensionDelegate.session == nil)")
+        print("WATCH Session is reachable: \(String(describing: ExtensionDelegate.session?.isReachable))")
+        ExtensionDelegate.session?.sendMessage(["Activity" : "Session Activated"], replyHandler: nil, errorHandler: nil)
     }
+
 
     func applicationDidFinishLaunching() {
         // Perform any final initialization of your application.
         setSession()
-        ExtensionDelegate.firstScreen = InterfaceController.instance
-        ExtensionDelegate.instance = self
+        WC.ext = self
         
     }
 
 
     func applicationDidBecomeActive() {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        session?.sendMessage(["Activity" : "Session Activated"], replyHandler: nil, errorHandler: nil)
+        ExtensionDelegate.session?.sendMessage(["Activity" : "Session Activated"], replyHandler: nil, errorHandler: nil)
     }
 
     func applicationWillResignActive() {
@@ -46,11 +45,11 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate, WCSessionDelegate {
         // Use this method to pause ongoing tasks, disable timers, etc.
         print("Going inactive")
         do {
-            try session?.updateApplicationContext(["Activity" : "ResignActive"])
+            try ExtensionDelegate.session?.updateApplicationContext(["Activity" : "ResignActive"])
         } catch let error as NSError {
             print("ERROR from Watch: \(error.localizedDescription)")
         }
-        session?.sendMessage(["Activity" : "ResignActive"], replyHandler: nil, errorHandler: nil)
+        ExtensionDelegate.session?.sendMessage(["Activity" : "ResignActive"], replyHandler: nil, errorHandler: nil)
     }
 
     func handle(_ backgroundTasks: Set<WKRefreshBackgroundTask>) {
