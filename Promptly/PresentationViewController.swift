@@ -29,11 +29,16 @@ class PresentationViewController: UIViewController {
         timeLabel.text = "\(presentation.durationMinutes):\(presentation.durationSeconds)"
                 
         self.navigationItem.setRightBarButton(UIBarButtonItem(title: "Edit", style: .plain, target: #selector(editPressed), action: #selector(editPressed)), animated: true)
+        self.navigationItem.rightBarButtonItem?.action = #selector(editPressed)
         
-        let line = UIView(frame: CGRect(x: upperStackView.frame.minX, y: upperStackView.frame.minY, width: 2, height: upperStackView.frame.height))
+        /*let line = UIView(frame: CGRect(x: upperStackView.frame.minX, y: upperStackView.frame.minY, width: 2, height: upperStackView.frame.height))
         line.backgroundColor = UIColor.blue
-        upperStackView.addArrangedSubview(line)
+        upperStackView.addArrangedSubview(line)*/
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     

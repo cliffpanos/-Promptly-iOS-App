@@ -18,9 +18,10 @@ class HomeViewController: UIViewController {
     var filteredPresentations = [Presentation]()
     
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var toolBar: UIToolbar!
-    @IBOutlet var searchDisplay: UISearchController!
+    
+    var searchDisplay = UISearchController(searchResultsController: nil)
+    var searchBar: UISearchBar!
     var selector: Selector!
     
     required init?(coder aDecoder: NSCoder) {
@@ -34,6 +35,17 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar = searchDisplay.searchBar
+        searchBar.scopeButtonTitles = ["Title", "Description", "Duration"]
+        searchBar.placeholder = "Title, Description, or Duration"
+        searchBar.autocapitalizationType = .words
+        searchBar.delegate = self
+        searchDisplay.dimsBackgroundDuringPresentation = false
+        self.searchDisplay.searchResultsUpdater = self
+
+        
+        tableView.tableHeaderView = searchDisplay.searchBar
+        
         let offset = CGPoint(x: 0, y: (self.navigationController?.navigationBar.frame.height)!)
         tableView.setContentOffset(offset, animated: true)
         
@@ -41,10 +53,6 @@ class HomeViewController: UIViewController {
         editButtonItem.tintColor = toolBar.items?[0].tintColor
         editButtonItem.action = #selector(onEditPressed)
         
-        self.searchDisplayController?.searchResultsTableView.register(PresentationCell.self, forCellReuseIdentifier: "presentationCell")
-        //self.searchDisplayController?.searchResultsTableView.dataSource = self
-        //self.searchDisplayController?.searchResultsTableView.delegate = self
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +72,10 @@ class HomeViewController: UIViewController {
             print(error.localizedDescription)
         }
         
+    }
+    
+    fileprivate func isSearching() -> Bool {
+        return searchDisplay.isActive && !(searchDisplay.searchBar.text ?? "").isEmpty
     }
     
     func onEditPressed() {
@@ -87,7 +99,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         
         print("Number of Presentations: \(presentations.count)")
 
-        return (searchDisplay.searchBar.text != "" && searchDisplay.isActive) ? filteredPresentations.count : presentations.count
+        return isSearching() ? filteredPresentations.count : presentations.count
         
     }
     
@@ -96,7 +108,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "presentationCell", for: indexPath)
             as! PresentationCell
         
-        let presentation = (searchDisplay.searchBar.text != "" && searchDisplay.isActive) ? filteredPresentations[indexPath.row] : presentations[indexPath.row]
+        let presentation = self.isSearching() ? filteredPresentations[indexPath.row] : presentations[indexPath.row]
         
         cell.decorate(for: presentation)
         print("dequeued cell")
@@ -106,7 +118,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let presentation = (searchDisplay.searchBar.text != "" && searchDisplay.isActive) ? filteredPresentations[indexPath.row] : presentations[indexPath.row]
+        let presentation = isSearching() ? filteredPresentations[indexPath.row] : presentations[indexPath.row]
         
         PresentationViewController.present(for: presentation,
                 in: self.navigationController!)
@@ -122,7 +134,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        guard searchDisplay.searchBar.text == "" && !searchDisplay.isActive else {
+        guard !isSearching() else {
             return
         }
         
@@ -135,22 +147,24 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             }
         
         default: return
-        
         }
 
     }
     
-    
 }
 
 
-//MARK: - Delegate extension for Search Display Controller
+//MARK: - Delegate extension for Search Controller
 
-extension HomeViewController: UISearchResultsUpdating, UISearchBarDelegate, UISearchDisplayDelegate {
+extension HomeViewController: UISearchResultsUpdating, UISearchDisplayDelegate, UISearchBarDelegate {
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        updateSearchResults(for: searchDisplay)
+    }
+
+    func updateSearchResults(for searchController: UISearchController) {
         
-        let text = searchText.lowercased()
+        let text = searchBar.text?.lowercased() ?? ""
         let scope = searchBar.selectedScopeButtonIndex
         
         filteredPresentations = presentations.filter { presentation in
@@ -159,7 +173,7 @@ extension HomeViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
             switch (scope) {
             case 0: searchString = presentation.title
             case 1: searchString = presentation.details
-            case 2: searchString = "\(presentation.durationMinutes) \(presentation.durationSeconds)"
+            case 2: searchString = "\(presentation.durationMinutes):\(presentation.durationSeconds)"
             default: searchString = ""
             }
             
@@ -168,23 +182,16 @@ extension HomeViewController: UISearchResultsUpdating, UISearchBarDelegate, UISe
             }
             return searchString?.lowercased().contains(text) ?? false
         }
-        print("FILTERING!!")
-        tableView.reloadData()
-    }
-    
-    //Not called??
-    func updateSearchResults(for searchController: UISearchController) {
         
-        let text = searchController.searchBar.text?.lowercased()
-        filteredPresentations = presentations.filter { presentation in
-                return presentation.title?.lowercased().contains(text!) ?? false
-            }
-        print("FILTERING!!")
+        print("FILTERING FROM FUNCTION CALLED!!")
         tableView.reloadData()
+        
     }
     
     
 }
+
+
 
 class PresentationCell: UITableViewCell {
     
@@ -193,12 +200,6 @@ class PresentationCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     
     func decorate(for presentation: Presentation) {
-        
-        guard presTitle != nil else {
-            print("Guard statement cell")
-            self.tintColor = UIColor.darkGray
-            return
-        }
         
         self.presTitle.text = presentation.title;
         self.subTitle.text = presentation.details;

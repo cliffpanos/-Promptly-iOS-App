@@ -59,7 +59,7 @@
             <objects>
                 <controller id="gsu-gT-qJs">
                     <items>
-                        <group width="1" alignment="left" animationDuration="1" layout="vertical" id="1iW-kk-ILB">
+                        <group width="1" alignment="left" animationDuration="1" layout="vertical" spacing="5" id="1iW-kk-ILB">
                             <items>
                                 <timer alignment="left" id="ydm-D2-qxg">
                                     <color key="textColor" red="0.97032368179999995" green="0.31497259649999998" blue="0.35228304030000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -87,7 +87,7 @@
             <objects>
                 <controller id="bAS-AQ-6h4">
                     <items>
-                        <group width="1" height="1" alignment="center" verticalAlignment="center" layout="vertical" id="6Rq-gh-49h">
+                        <group width="1" height="1" alignment="center" verticalAlignment="center" layout="vertical" spacing="5" id="6Rq-gh-49h">
                             <items>
                                 <label width="1" alignment="left" text="PRES TITLE" textAlignment="center" numberOfLines="2" id="RZh-Uo-sz0">
                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -110,7 +110,15 @@
             <objects>
                 <notificationController id="YCC-NB-fut">
                     <items>
-                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                        <timer width="1" alignment="left" textAlignment="center" id="Pep-AB-X0n">
+                            <color key="textColor" red="0.97032368179999995" green="0.31497259649999998" blue="0.35228304030000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="font" type="system" pointSize="38"/>
+                            <calendarUnit key="units" minute="YES" second="YES"/>
+                        </timer>
+                        <label width="1" alignment="left" text="XX Minutes In" textAlignment="center" id="IdU-wH-bcW"/>
+                        <label width="1" alignment="left" text="PRES TITLE" textAlignment="center" id="vdo-Oe-lUW">
+                            <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
                     </items>
                     <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
                     <connections>

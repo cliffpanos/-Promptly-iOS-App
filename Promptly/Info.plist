@@ -62,7 +62,7 @@
 			<key>UIApplicationShortcutItemTitle</key>
 			<string>Control Settings</string>
 			<key>UIApplicationShortcutItemIconFile</key>
-			<string>settingsIcon</string>
+			<string>Settings3DT</string>
 			<key>UIApplicationShortcutItemType</key>
 			<string>Settings</string>
 			<key>UIApplicationShortcutItemUserInfo</key>
