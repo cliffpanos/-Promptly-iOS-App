@@ -111,7 +111,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         let presentation = self.isSearching() ? filteredPresentations[indexPath.row] : presentations[indexPath.row]
         
         cell.decorate(for: presentation)
-        print("dequeued cell")
         
         return cell
     }
@@ -134,7 +133,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
-        guard !isSearching() else {
+        guard !isSearching() else { //Do not go into edit mode if the tableView is in search mode
             return
         }
         
